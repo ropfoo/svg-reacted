@@ -1,9 +1,13 @@
-export const defaultTSX = (path: string | null) => `
+import { getSetup } from '../getSetup';
+
+export const defaultTSX = (path: string | null) => {
+  const { width, height } = getSetup();
+  return `
 import React from 'react';
 
-const SVGIcon = () => {
+const SVGIcon: React.FC = () => {
     return (
-        <svg>
+        <svg width="${width}" height="${height}">
             <path d="${path}">
         </svg>
     );
@@ -12,3 +16,4 @@ const SVGIcon = () => {
 export default SVGIcon;
 
 `;
+};

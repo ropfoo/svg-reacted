@@ -1,4 +1,4 @@
 export const argsConfig = Object.freeze({
-  outputFileName: 0,
-  inputFileName: 1,
+  inputFileName: 0,
+  outputFileName: 1,
 });
