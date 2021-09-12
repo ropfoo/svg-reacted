@@ -21,3 +21,16 @@ export const getFileName = (fileName: fileNameType): string => {
       return 'noname.tsx';
   }
 };
+
+export const getDimensionsFromFile = (data: string) => {
+  const regexArrayDimensions = data.match(
+    /(?<=width=").*?(?=")|(?<=height=").*?(?=")/g
+  );
+  const width = regexArrayDimensions && regexArrayDimensions[0];
+  const height = regexArrayDimensions && regexArrayDimensions[1];
+
+  return {
+    width,
+    height,
+  };
+};

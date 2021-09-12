@@ -1,7 +1,7 @@
 import { getSetup } from '../getSetup';
 
-export const defaultTSX = (path: string | null) => {
-  const { width, height } = getSetup();
+export const defaultTSX = (svgData: string) => {
+  const { path, width, height } = getSetup(svgData);
   return `
 import React from 'react';
 

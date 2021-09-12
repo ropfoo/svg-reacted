@@ -8,12 +8,9 @@ readFile(`./input/${getFileName(fileNameType.INPUT)}`, 'utf8', (err, data) => {
     return;
   }
 
-  const regexArray = data.match(/(?<=path d=").*(?=" fill)/);
-  const path = regexArray && regexArray[0];
-
   writeFile(
     `./output/${getFileName(fileNameType.OUTPUT)}`,
-    defaultTSX(path),
+    defaultTSX(data),
     (err) => {
       err && console.log(err);
     }
