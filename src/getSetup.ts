@@ -1,27 +1,19 @@
-import { readFileSync } from 'fs';
-import { getDimensionsFromFile } from './helper';
-
-interface setupJSON {
-  useDefaultSize: boolean;
-  svgComponent: {
-    width: number;
-    height: number;
-  };
-}
+import { getDimensions, getName, getPath } from './helper';
+import { getSetupJSON } from './helper/getSetupJSON';
 
 export const getSetup = (svgData: string) => {
-  const setupData = readFileSync('setup.json', 'utf8');
-  const { useDefaultSize, svgComponent }: setupJSON = JSON.parse(setupData);
+  const { useDefaultSize, svgComponent } = getSetupJSON();
 
-  const regexArrayPath = svgData.match(/(?<=path d=").*?(?=")/g);
-  const path = regexArrayPath && regexArrayPath[0];
-
-  const dimensions = useDefaultSize
-    ? getDimensionsFromFile(svgData)
+  const name = getName();
+  const path = getPath(svgData);
+  const { width, height } = useDefaultSize
+    ? getDimensions(svgData)
     : svgComponent;
 
   return {
+    name,
     path,
-    ...dimensions,
+    width,
+    height,
   };
 };

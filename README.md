@@ -4,10 +4,11 @@
 // setup.json
 
 {
-    "useDefaultSize": true,     // use default SVG Size
-    "svgComponent": {           // use custom SVG Size
-        "width": 50,
-        "height": 50
-    }
+  "useDefaultSize": true,
+  "svgComponent": {
+    "type": "tsx",
+    "width": 50,
+    "height": 50
+  }
 }
 ```
