@@ -1,5 +1,5 @@
 import { readFile, writeFile } from 'fs';
-import { fileNameType, getFileName } from './helper';
+import { fileNameType, getFileName } from './helper/getFileName';
 import { defaultTSX } from './templates/defaultTSX';
 
 readFile(`./input/${getFileName(fileNameType.INPUT)}`, 'utf8', (err, data) => {

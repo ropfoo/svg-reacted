@@ -4,6 +4,7 @@ interface setupJSON {
   useDefaultSize: boolean;
   svgComponent: {
     type: 'tsx' | 'jsx';
+    fill: string;
     width: number;
     height: number;
   };
