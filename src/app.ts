@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'fs';
 import { fileNameType, getFileName } from './helper/getFileName';
-import { defaultTSX } from './templates/defaultTSX';
+import { getTemplate } from './helper/getTemplate';
 
 readFile(`./input/${getFileName(fileNameType.INPUT)}`, 'utf8', (err, data) => {
   if (err) {
@@ -10,7 +10,7 @@ readFile(`./input/${getFileName(fileNameType.INPUT)}`, 'utf8', (err, data) => {
 
   writeFile(
     `./output/${getFileName(fileNameType.OUTPUT)}`,
-    defaultTSX(data),
+    getTemplate(data),
     (err) => {
       err && console.log(err);
     }

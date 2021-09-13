@@ -1,7 +1,12 @@
 import { readFileSync } from 'fs';
 
+export enum template {
+  HOC = 'hoc',
+}
+
 interface setupJSON {
   useDefaultSize: boolean;
+  templateType: template;
   svgComponent: {
     type: 'tsx' | 'jsx';
     fill: string;
