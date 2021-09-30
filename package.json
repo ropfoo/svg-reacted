@@ -1,12 +1,15 @@
 {
-  "name": "svg-to-jsx",
-  "version": "1.0.0",
+  "name": "svg-reacted",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "files": ["lib/**/*"],
+  "main": "./src/index.ts",
+  "bin":  "./lib/index.js",
   "scripts": {
-    "start": "ts-node ./src/app.ts"
+    "start": "ts-node ./src/app.ts",
+    "build": "tsc"
   },
-  "author": "",
+  "author": "ropfoo",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.9.0",
