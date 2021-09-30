@@ -1,19 +1,19 @@
 import { readFile, writeFile } from 'fs';
-import { fileNameType, getFileName } from './helper/getFileName';
+import { filePathType, getFilePath } from './helper/getFilePath';
 import { getTemplate } from './helper/getTemplate';
 
 const runSvgReacted = () => {
-    readFile(`${getFileName(fileNameType.INPUT)}`, 'utf8', (err, data) => {
+    readFile(`${getFilePath(filePathType.INPUT)}`, 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return;
         }
 
         writeFile(
-            `${getFileName(fileNameType.OUTPUT)}`,
+            `${getFilePath(filePathType.OUTPUT)}`,
             getTemplate(data),
             err => {
-                err && console.log(err);
+                err && console.error(err);
             }
         );
     });

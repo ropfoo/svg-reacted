@@ -1,13 +1,25 @@
 import { argsConfig } from '../args.config';
-import { fileNameType, getFileName } from './getFileName';
+import { filePathType, getFilePath } from './getFilePath';
+import { setupJSON } from './getSetupJSON';
 
 export const getName = () => {
-  const args = process.argv.slice(2);
-  const fileName = getFileName(fileNameType.INPUT);
+    const { svgComponent } = setupJSON;
+    const args = process.argv.slice(2);
+    const path = getFilePath(filePathType.INPUT);
+    const pathArr = path.split('/');
 
-  if (args[argsConfig.outputName]) {
-    return args[argsConfig.outputName].split('.')[0];
-  } else {
-    return fileName.split('.')[0];
-  }
+    let fileName = pathArr[pathArr.length - 1];
+    if (svgComponent.usePascalCase) {
+        const pascalCaseFileName =
+            fileName.charAt(0).toUpperCase() + fileName.slice(1);
+        fileName = pascalCaseFileName;
+    }
+
+    if (args[argsConfig.outputName]) {
+        return `${args[argsConfig.outputName].split('.')[0]}${
+            svgComponent.nameExtension ?? ''
+        }`;
+    } else {
+        return `${fileName.split('.')[0]}${svgComponent.nameExtension ?? ''}`;
+    }
 };

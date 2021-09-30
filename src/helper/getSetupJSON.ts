@@ -8,7 +8,11 @@ export enum template {
 interface setupJSON {
     useDefaultSize: boolean;
     templateType: template;
+    inputDir: string;
+    outputDir: string;
     svgComponent: {
+        usePascalCase: boolean;
+        nameExtension: string;
         type: 'tsx' | 'jsx';
         fill: string;
         width: number;
@@ -16,7 +20,9 @@ interface setupJSON {
     };
 }
 
-export const getSetupJSON = () => {
-    const setupData = readFileSync('setup.json', 'utf8');
+const getSetupJSON = () => {
+    const setupData = readFileSync('svgconfig.json', 'utf8');
     return JSON.parse(setupData) as setupJSON;
 };
+
+export const setupJSON = getSetupJSON();

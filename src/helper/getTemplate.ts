@@ -1,10 +1,10 @@
 import { defaultTSX } from '../templates/defaultTSX';
 import { nativeTSX } from '../templates/pdNativeTSX';
 import { createWithHocTSX } from '../templates/withHocTSX';
-import { getSetupJSON, template } from './getSetupJSON';
+import { setupJSON, template } from './getSetupJSON';
 
 export const getTemplate = (data: string) => {
-    const { templateType } = getSetupJSON();
+    const { templateType } = setupJSON;
 
     switch (templateType) {
         case template.HOC:
