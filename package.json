@@ -1,6 +1,6 @@
 {
   "name": "svg-reacted",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "files": ["lib/**/*"],
   "main": "./src/index.ts",
