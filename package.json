@@ -11,6 +11,10 @@
   },
   "author": "ropfoo",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RopFoo/svg-reacted.git"
+  },
   "devDependencies": {
     "@types/node": "^16.9.0",
     "ts-node": "^10.2.1",
