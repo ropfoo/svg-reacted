@@ -13,16 +13,18 @@ Create an **svgconfig.json** file in the root of your project.
 
 {
     "useDefaultSize": true,
-    "templateType": "hoc",
-    "inputDir":"svg",
-    "outputDir":"react",
+    "templateFile": "template/template.txt",
+    "inputDir": "svg",
+    "outputDir": "react",
     "svgComponent": {
         "nameExtension": "Icon",
         "type": "tsx",
-        "fill": "black",
+        "fill": "black"
     }
 }
 ```
+
+Create a template file matching the defined path in your config file
 
 Run the follwing command in the same location
 
@@ -30,24 +32,56 @@ Run the follwing command in the same location
 npx svg-reacted your.svg
 ```
 
+# Template File
+
+### Supported Variables
+
+|               |
+| ------------- |
+| **#{name}**   |
+| **#{path}**   |
+| **#{fill}**   |
+| **#{width}**  |
+| **#{height}** |
+
+```txt
+import React from 'react';
+import Svg, { Path } from 'react-native-svg';
+
+const #{name}: React.FC = ({size = 30}) => {
+    return (
+        <Svg width={size} height={size} viewBox='0 0 #{width} #{height}' fill='#{fill}'>
+            <Path
+            d='#{path}'
+            fill='#{fill}'
+            stroke='#{fill}'
+            />
+        </Svg>
+    );
+};
+
+export default #{name};
+
+```
+
 # Configuration
 
 ### General
 
-|   |   |   |
-|---|---|---|
-|__useDefaultSize__| boolean |  |
-| __templateType__ | string | 'hoc', 'pdNative' |
-| __inputDir__ | string |  |
-| __outputDir__ | string |  |
+|                    |         |                                |
+| ------------------ | ------- | ------------------------------ |
+| **useDefaultSize** | boolean |                                |
+| **templateFile**   | string  | path to created temmplate file |
+| **inputDir**       | string  |                                |
+| **outputDir**      | string  |                                |
 
 ### svgComponent
 
-|   |   |   |
-|---|---|---|
-|__usePascalCase__| boolean | turn first letter to uppercase |
-|__nameExtension__| string |  |
-| __type__ | string | 'tsx', 'jsx' |
-| __fill__ | string |  |
-| __width__ | number |  |
-| __height__ | number |  |
+|                   |         |                                |
+| ----------------- | ------- | ------------------------------ |
+| **usePascalCase** | boolean | turn first letter to uppercase |
+| **nameExtension** | string  |                                |
+| **type**          | string  | 'tsx', 'jsx'                   |
+| **fill**          | string  |                                |
+| **width**         | number  |                                |
+| **height**        | number  |                                |

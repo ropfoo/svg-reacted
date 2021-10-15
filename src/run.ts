@@ -1,19 +1,33 @@
 import { readFile, writeFile } from 'fs';
+import { generator } from './generator';
 import { filePathType, getFilePath } from './helper/getFilePath';
-import { getTemplate } from './helper/getTemplate';
 
 const runSvgReacted = () => {
-    readFile(`${getFilePath(filePathType.INPUT)}`, 'utf8', (err, data) => {
+    readFile(`${getFilePath(filePathType.INPUT)}`, 'utf8', (err, svgData) => {
         if (err) {
             console.error(err);
             return;
         }
 
-        writeFile(
-            `${getFilePath(filePathType.OUTPUT)}`,
-            getTemplate(data),
-            err => {
-                err && console.error(err);
+        readFile(
+            getFilePath(filePathType.TEMPLATE),
+            'utf8',
+            (err, templateData) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+
+                writeFile(
+                    `${getFilePath(filePathType.OUTPUT)}`,
+                    generator({
+                        templateString: templateData,
+                        svgData: svgData,
+                    }),
+                    err => {
+                        err && console.error(err);
+                    }
+                );
             }
         );
     });

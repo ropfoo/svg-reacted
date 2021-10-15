@@ -1,0 +1,12 @@
+{
+    "useDefaultSize": true,
+    "templateFile": "template/template.txt",
+    "inputDir":"svg",
+    "outputDir":"react",
+    "svgComponent": {
+        "usePascalCase": true,
+        "nameExtension": "Icon",
+        "type": "jsx",
+        "fill": "black"
+    }
+}

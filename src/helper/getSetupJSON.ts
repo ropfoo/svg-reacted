@@ -1,13 +1,8 @@
 import { readFileSync } from 'fs';
 
-export enum template {
-    HOC = 'hoc',
-    PD_NATIVE = 'pdNative',
-}
-
 interface setupJSON {
     useDefaultSize: boolean;
-    templateType: template;
+    templateFile: string;
     inputDir: string;
     outputDir: string;
     svgComponent: {

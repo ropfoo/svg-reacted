@@ -5,11 +5,12 @@ import { setupJSON } from './getSetupJSON';
 export enum filePathType {
     OUTPUT = 'output',
     INPUT = 'input',
+    TEMPLATE = 'template',
 }
 
 export const getFilePath = (filePath: filePathType): string => {
     const args = process.argv.slice(2);
-    const { svgComponent, outputDir, inputDir } = setupJSON;
+    const { svgComponent, outputDir, inputDir, templateFile } = setupJSON;
 
     switch (filePath) {
         case filePathType.OUTPUT:
@@ -22,6 +23,9 @@ export const getFilePath = (filePath: filePathType): string => {
             return inputDir
                 ? `${inputDir}/${args[argsConfig.inputFileName]}`
                 : args[argsConfig.inputFileName];
+
+        case filePathType.TEMPLATE:
+            return templateFile;
 
         default:
             return 'noname.tsx';
