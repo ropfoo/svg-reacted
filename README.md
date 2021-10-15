@@ -44,6 +44,29 @@ npx svg-reacted your.svg
 | **#{width}**  |
 | **#{height}** |
 
+### Example React DOM
+
+```txt
+import React from 'react';
+
+const #{name}: React.FC = ({size = 30}) => {
+    return (
+        <svg width={size} height={size} viewBox='0 0 #{width} #{height}' fill='#{fill}'>
+            <path
+            d='#{path}'
+            fill='#{fill}'
+            stroke='#{fill}'
+            />
+        </svg>
+    );
+};
+
+export default #{name};
+
+```
+
+### Example React Native
+
 ```txt
 import React from 'react';
 import Svg, { Path } from 'react-native-svg';
